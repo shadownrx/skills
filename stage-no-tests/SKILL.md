@@ -1,25 +1,25 @@
 ---
 name: stage-no-tests
-description: "Leave test files unstaged when staging work for review or a commit. Use when staging files, presenting developed code, or preparing a commit or PR."
+description: "Install or explain the hook that keeps the agent from staging test files."
+disable-model-invocation: true
 ---
 
-The user reviews staged files and skips tests, so tests stay **unstaged**. This overrides any repo rule that asks to stage tests; the rest of that rule still applies.
+The user reviews staged files and skips tests, so the agent leaves tests **unstaged**. `guard.py` (next to this file) enforces it as a Claude Code `PreToolUse` hook: before each Bash call it runs `git add --dry-run` for every `git add` in the command, following `cd` and `-C`, and denies the call when a test file would be staged. Tests the user stages by hand are untouched.
 
-## Steps
+## Install
 
-1. Pick the files to stage as the repo's rules say.
+Add this to `hooks.PreToolUse` in `~/.claude/settings.json`, next to any existing `Bash` entry:
 
-2. Drop every **test file** from that list (see Reference), then stage the rest.
+```json
+{ "matcher": "Bash", "hooks": [{ "type": "command", "command": "python3 '<skill-dir>/guard.py'", "timeout": 10 }] }
+```
 
-3. Check: `git diff --cached --name-only` lists no test file you staged. Test files the user staged stay as they are.
+Then check it: in a scratch repo with `tests/test_x.py`, the agent's `git add -A` is denied and `git add <non-test file>` passes.
 
-4. Tell the user which test files you left unstaged. A commit takes only staged files, so those tests stay out of the commit and the PR until the user stages them.
+## Test files
 
-## Reference
-
-Test files:
-
-- Any path under a `test/` or `tests/` folder, `conftest.py` included.
+- Any path under a `test/` or `tests/` folder, plus `conftest.py` and `__snapshots__/`.
 - `test_*.py`, `*_test.py`, `*_test.go`.
-- `*.test.*` and `*.spec.*` (`.ts`, `.tsx`, `.js`, `.jsx`).
-- Snapshots and fixtures that only tests use (`__snapshots__/`, `fixtures/` inside a test folder).
+- `*.test.*` and `*.spec.*` for JS and TS files.
+
+Change `TEST_PATH` in `guard.py` to add a pattern.

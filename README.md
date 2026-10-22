@@ -6,7 +6,8 @@ Skills para [Claude Code](https://claude.com/claude-code) y otros agentes que le
 |---|---|---|
 | [`prompt-retro`](prompt-retro/SKILL.md) | Revisa tus mensajes de la sesión y muestra cómo escribirlos mejor. Solo marca los que costaron turnos o retrabajo, y separa lo que fue culpa del prompt de lo que fue del agente o del contexto. | `/prompt-retro` al cerrar una sesión |
 | [`read-whatsapp`](read-whatsapp/SKILL.md) | Lee tus chats, grupos y canales de WhatsApp Desktop (macOS) desde la base local. Solo lee: trabaja sobre una copia y nunca envía. | "¿Qué dijeron hoy en el grupo X?" |
-| [`stage-no-tests`](stage-no-tests/SKILL.md) | Al stagear para revisar o commitear, deja los tests sin stage. Avisa cuáles quedaron afuera, porque no entran en el commit. | Automático al stagear |
+| [`stage-no-tests`](stage-no-tests/SKILL.md) | Hook que impide que el agente stagee tests: bloquea cualquier `git add` que incluiría un test. Los que stageás vos no se tocan. | Instalá el hook (ver la skill) |
+| [`decisiones-tecnicas`](decisiones-tecnicas/SKILL.md) | Revisa las decisiones técnicas de la sesión, empezando por las de arquitectura, y explica cuál habría sido la mejor y por qué. | `/decisiones-tecnicas` al cerrar una sesión |
 
 ## Instalación
 
@@ -17,6 +18,7 @@ git clone https://github.com/shadownrx/skills.git ~/code/skills
 ln -s ~/code/skills/prompt-retro ~/.claude/skills/prompt-retro
 ln -s ~/code/skills/read-whatsapp ~/.claude/skills/read-whatsapp
 ln -s ~/code/skills/stage-no-tests ~/.claude/skills/stage-no-tests
+ln -s ~/code/skills/decisiones-tecnicas ~/.claude/skills/decisiones-tecnicas
 ```
 
 Para un solo repo, copiá la carpeta a `.claude/skills/` de ese repo.
