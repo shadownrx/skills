@@ -34,6 +34,6 @@ The user wants **10 versions** of one screen, side by side in **one HTML file**,
 
 5. Under each version's switcher name, show its bet in one line and its main tradeoff.
 
-6. Save the file (in the project when there is one, else the current folder) and open it. Tell the user the path, the 10 bets in a table, and your recommended version with the reason.
+6. Save the file in the screen's project (e.g. `docs/ux/`). When the current folder belongs to an unrelated project, save it in a temp folder instead and say so. Open it. Tell the user the path, the 10 bets in a table, and your recommended version with the reason.
 
 Every version passes step 4 and differs from the others in structure, not only in color.
