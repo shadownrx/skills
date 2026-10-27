@@ -9,6 +9,7 @@ Skills para [Claude Code](https://claude.com/claude-code) y otros agentes que le
 | [`stage-no-tests`](stage-no-tests/SKILL.md) | Hook que impide que el agente stagee tests: bloquea cualquier `git add` que incluiría un test. Los que stageás vos no se tocan. | Instalá el hook (ver la skill) |
 | [`decisiones-tecnicas`](decisiones-tecnicas/SKILL.md) | Revisa las decisiones técnicas de la sesión, empezando por las de arquitectura, y explica cuál habría sido la mejor y por qué. | `/decisiones-tecnicas` al cerrar una sesión |
 | [`roast-sesion`](roast-sesion/SKILL.md) | Un informe con humor sobre la sesión, con números reales: tareas, bugs propios, «listo» que no lo eran y el momento más irónico. | `/roast-sesion` |
+| [`example`](example/SKILL.md) | Genera 10 versiones de una pantalla en un solo HTML, cada una con un patrón UX distinto, para comparar y elegir. | `/example checkout de un plan` |
 
 ## Instalación
 
@@ -21,6 +22,7 @@ ln -s ~/code/skills/read-whatsapp ~/.claude/skills/read-whatsapp
 ln -s ~/code/skills/stage-no-tests ~/.claude/skills/stage-no-tests
 ln -s ~/code/skills/decisiones-tecnicas ~/.claude/skills/decisiones-tecnicas
 ln -s ~/code/skills/roast-sesion ~/.claude/skills/roast-sesion
+ln -s ~/code/skills/example ~/.claude/skills/example
 ```
 
 Para un solo repo, copiá la carpeta a `.claude/skills/` de ese repo.
