@@ -18,7 +18,7 @@ The user wants to see how **one screen** looks on **Android and iOS at once**: t
 2. Build one self-contained `.html` file with two **phones**, Android on the left and iOS on the right:
    - Each phone is a device frame around an `<iframe>` sized to the selected model's CSS viewport from the tables below, then scaled with `transform` so both phones fit the window together. The iframe keeps the true viewport, so media queries and `vw` units behave as on the device.
    - Live source: both iframes load the URL. Otherwise each iframe gets the screen through `srcdoc`.
-   - Above each phone, a `<select>` with that platform's models, grouped by tier (low, mid, high) and showing the name and viewport (`Galaxy S10 · 360×760`). Changing it resizes that phone only, animated.
+   - Above each phone, a `<select>` with that platform's models, grouped by tier (low, mid, high, fold) and showing the name and viewport (`Galaxy S10 · 360×760`). Changing it resizes that phone only, animated.
    - A toolbar with: portrait/landscape, light/dark, and a **sync** toggle that mirrors scroll position between both phones.
    - The URL hash keeps both models, the orientation, and the theme, so a reload restores the same comparison.
    - Inline CSS and JS only; no build step, no external scripts.
@@ -28,6 +28,7 @@ The user wants to see how **one screen** looks on **Android and iOS at once**: t
    - The screen's corner radius, and the bezel: thin and even on all-screen models; a forehead with earpiece and a chin with the home button on iPhone SE and Galaxy J2 Prime.
    - The status bar at the model's top inset, and the bottom system area: home indicator, gesture bar, or 3-button navigation.
    - The insets reproduced as padding inside the iframe (`env(safe-area-inset-*)` on iOS, system bars on Android).
+   - On a fold model's open screen, the hinge crease as a thin line down the middle, so content it crosses is visible.
    - In landscape the hardware rotates with the phone: the cutout sits on the left edge, its inset moves to the sides, and the iOS status bar hides.
 
 4. When the screen is rebuilt or designed (not live), render it **native** to each platform from the same content and task:
@@ -42,7 +43,7 @@ The user wants to see how **one screen** looks on **Android and iOS at once**: t
 
 ## Models
 
-Portrait values in CSS px, grouped by **tier**. Each selector groups its models by tier with `<optgroup>` and defaults to the first mid model. Viewports are exact; cutout sizes and radii are close approximations.
+Portrait values in CSS px, grouped by **tier**. Each selector groups its models by tier with `<optgroup>` and defaults to the first mid model. Viewports are exact unless marked; cutout sizes and radii are close approximations.
 
 | Tier | iOS | Viewport | Cutout | Corner radius | Inset top / bottom | Bottom |
 |---|---|---|---|---|---|---|
@@ -52,6 +53,8 @@ Portrait values in CSS px, grouped by **tier**. Each selector groups its models 
 | Mid | iPhone 13 mini | 375×812 | Narrow notch, 162×34 | 44 | 50 / 34 | Home indicator |
 | High | iPhone 15 Pro | 393×852 | Dynamic Island, 126×37, 11 from top | 55 | 59 / 34 | Home indicator |
 | High | iPhone 16 Pro Max | 440×956 | Dynamic Island, 126×37, 14 from top | 62 | 62 / 34 | Home indicator |
+| Fold | iPhone Duo (cover) | 466×678 (estimate) | Punch-hole, center (estimate) | 40 | 44 / 34 | Home indicator |
+| Fold | iPhone Duo (open) | 890×626 (estimate) | None; hinge crease | 36 | 24 / 21 | Home indicator |
 
 | Tier | Android | Viewport | Cutout | Corner radius | Inset top / bottom | Bottom |
 |---|---|---|---|---|---|---|
@@ -62,9 +65,12 @@ Portrait values in CSS px, grouped by **tier**. Each selector groups its models 
 | High | Galaxy S23 | 360×780 | Punch-hole, center | 28 | 32 / 24 | Gesture bar |
 | High | Galaxy S10 | 360×760 | Punch-hole, top right | 30 | 32 / 24 | Gesture bar |
 | High | Pixel 8 Pro | 448×998 | Punch-hole, center | 36 | 32 / 24 | Gesture bar |
-| High | Galaxy Z Fold 5 (cover) | 344×882 | Punch-hole, center | 20 | 32 / 24 | Gesture bar |
+| Fold | Galaxy Z Fold 5 (cover) | 344×882 | Punch-hole, center | 20 | 32 / 24 | Gesture bar |
+| Fold | Galaxy Z Fold 5 (open) | 690×829 | None; hinge crease | 22 | 32 / 24 | Gesture bar |
 
 Apple sells no low tier: its low models are the oldest and smallest still in use. The low tier is where a layout breaks first, so step 5 starts there.
+
+The iPhone Duo viewports are Apple's published pixels (1398×2034 cover, 1878×2670 open) divided by an assumed 3x scale, and its hardware is estimated: replace them when Apple documents the points.
 
 When the user names a model outside the tables, add it to its tier with its real viewport and hardware.
 
