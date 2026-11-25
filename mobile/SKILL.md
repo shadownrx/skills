@@ -18,7 +18,7 @@ The user wants to see how **one screen** looks on **Android and iOS at once**: t
 2. Build one self-contained `.html` file with two **phones**, Android on the left and iOS on the right:
    - Each phone is a device frame around an `<iframe>` sized to the selected model's CSS viewport from the table below, then scaled with `transform` so both phones fit the window together. The iframe keeps the true viewport, so media queries and `vw` units behave as on the device.
    - Live source: both iframes load the URL. Otherwise each iframe gets the screen through `srcdoc`.
-   - Above each phone, a `<select>` with that platform's models, showing the name and viewport (`Galaxy S10 · 360×760`). Changing it resizes that phone only, animated.
+   - Above each phone, a `<select>` with that platform's models, grouped by tier (low, mid, high) and showing the name and viewport (`Galaxy S10 · 360×760`). Changing it resizes that phone only, animated.
    - A toolbar with: portrait/landscape, light/dark, and a **sync** toggle that mirrors scroll position between both phones.
    - The URL hash keeps both models, the orientation, and the theme, so a reload restores the same comparison.
    - Inline CSS and JS only; no build step, no external scripts.
@@ -39,17 +39,21 @@ The user wants to see how **one screen** looks on **Android and iOS at once**: t
 
 ## Models
 
-CSS viewport in portrait, width × height. Default to the first of each list.
+CSS viewport in portrait, width × height, grouped by **tier**. Each selector groups its models by tier with `<optgroup>` and defaults to the first mid model.
 
-| Android | Viewport | iOS | Viewport |
-|---|---|---|---|
-| Galaxy S23 | 360×780 | iPhone 15 Pro | 393×852 |
-| Galaxy S10 | 360×760 | iPhone 11 | 414×896 |
-| Galaxy S20 Ultra | 412×915 | iPhone SE (3rd gen) | 375×667 |
-| Galaxy Z Fold 5 (cover) | 344×882 | iPhone 13 mini | 375×812 |
-| Pixel 7 | 412×915 | iPhone 14 | 390×844 |
-| Pixel 8 Pro | 448×998 | iPhone 16 Pro Max | 440×956 |
+| Tier | Android | Viewport | iOS | Viewport |
+|---|---|---|---|---|
+| Low | Galaxy J2 Prime | 360×640 | iPhone SE (3rd gen) | 375×667 |
+| Low | Galaxy A05 | 360×800 | iPhone 11 | 414×896 |
+| Mid | Galaxy A54 | 360×780 | iPhone 14 | 390×844 |
+| Mid | Pixel 7a | 412×915 | iPhone 13 mini | 375×812 |
+| High | Galaxy S23 | 360×780 | iPhone 15 Pro | 393×852 |
+| High | Galaxy S10 | 360×760 | iPhone 16 Pro Max | 440×956 |
+| High | Pixel 8 Pro | 448×998 | | |
+| High | Galaxy Z Fold 5 (cover) | 344×882 | | |
 
-When the user names a model outside the table, add it with its real viewport.
+Apple sells no low tier: its low models are the oldest and smallest still in use. The low tier is where a layout breaks first, so step 5 starts there.
+
+When the user names a model outside the table, add it to its tier with its real viewport.
 
 The file is done when both phones show the same screen, every model in both selectors passes step 5, and the hash restores the comparison.

@@ -62,7 +62,7 @@ Todas usan los mismos criterios para un buen pedido:
 
 **`example`**: lee el contexto (repo, tokens de diseño, rutas, plataforma) y genera un HTML con 10 versiones de una pantalla. Cada versión usa un patrón UX distinto y tiene la tarea principal funcionando, con animaciones y accesibilidad. Se cambia de versión con `1`–`0` o las flechas. Si nombrás un producto que no encuentra, pregunta dónde está antes de suponer.
 
-**`mobile`**: toma la pantalla de una URL o dev server, del repo o de tu descripción, y la muestra en dos teléfonos: Android (Material 3) a la izquierda e iOS (HIG) a la derecha. Cada uno tiene su selector de modelo (Galaxy S10, iPhone 11, etc.) con el viewport real, barra de estado y zonas seguras. Incluye vertical/horizontal, claro/oscuro y scroll sincronizado.
+**`mobile`**: toma la pantalla de una URL o dev server, del repo o de tu descripción, y la muestra en dos teléfonos: Android (Material 3) a la izquierda e iOS (HIG) a la derecha. Cada uno tiene su selector de modelo, agrupado en gama baja, media y alta (Galaxy A05, Galaxy A54, Galaxy S10, iPhone 11, etc.), con el viewport real, barra de estado y zonas seguras. Incluye vertical/horizontal, claro/oscuro y scroll sincronizado.
 
 **`roast-sesion`**: un informe con humor sobre la sesión. Cada número sale de la sesión real; no inventa nada.
 
