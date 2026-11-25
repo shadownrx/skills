@@ -32,8 +32,9 @@ The user wants to see how **one screen** looks on **Android and iOS at once**: t
    - In landscape the hardware rotates with the phone: the cutout sits on the left edge, its inset moves to the sides, and the iOS status bar hides.
 
 4. When the screen is rebuilt or designed (not live), render it **native** to each platform from the same content and task:
-   - Android follows Material 3: Roboto, top app bar with left-aligned title, FAB, bottom navigation bar, ripple feedback, system back gesture.
-   - iOS follows the Human Interface Guidelines: system font (`-apple-system`), large centered or collapsing title, tab bar, back chevron with swipe-back, sheets that slide from the bottom.
+   - Android uses the Material 3 **component** for each job, with all its parts, not a generic control restyled: outlined or filled text fields with floating label, leading and trailing icons, and supporting text for the error under the field; filled, tonal, outlined, and text buttons at their M3 sizes with ripple; a snackbar for transient messages; top app bar with left-aligned title, FAB, navigation bar; a secondary screen opens full screen with a back arrow. Roboto.
+   - iOS uses the Human Interface Guidelines **component** for each job: inset grouped lists for forms with the label on the left, text actions in the tint color, a banner above the form for errors, large centered or collapsing title, tab bar, back chevron with swipe-back; a secondary screen opens as a sheet that slides from the bottom. System font (`-apple-system`).
+   - The same job gets a different component on each platform when the platforms differ; list those pairs in the step 6 table.
    - Both keep the main task working: inputs respond, buttons change state, empty and error states reachable.
    - Touch targets 48dp or more on Android and 44pt or more on iOS; contrast 4.5:1 or more; no horizontal scroll at any model in the tables.
 
