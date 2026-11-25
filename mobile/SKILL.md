@@ -24,7 +24,7 @@ The user wants to see how **one screen** looks on **Android and iOS at once**: t
    - Inline CSS and JS only; no build step, no external scripts.
 
 3. Draw each frame as the model's real **hardware**, taken from its row in the tables below, because the hardware decides how much of the screen is usable and where content collides:
-   - The cutout with its real shape, size, and position: notch, Dynamic Island, punch-hole, or none. It is drawn over the screen, so content that slides under it is visibly hidden.
+   - The cutout with its real shape, size, and position: notch, Dynamic Island, punch-hole, or none. It is drawn over the screen with a thin outline, so it stays visible on a dark screen and content that slides under it is visibly hidden.
    - The screen's corner radius, and the bezel: thin and even on all-screen models; a forehead with earpiece and a chin with the home button on iPhone SE and Galaxy J2 Prime.
    - The status bar at the model's top inset, and the bottom system area: home indicator, gesture bar, or 3-button navigation.
    - The insets reproduced as padding inside the iframe (`env(safe-area-inset-*)` on iOS, system bars on Android).
