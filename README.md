@@ -12,6 +12,7 @@ Skills para [Claude Code](https://claude.com/claude-code) y otros agentes que le
 | [`decisiones-tecnicas`](decisiones-tecnicas/SKILL.md) | Revisa las decisiones técnicas de la sesión, empezando por las de arquitectura, y explica cuál habría sido la mejor y por qué. | `/decisiones-tecnicas` al cerrar una sesión |
 | [`roast-sesion`](roast-sesion/SKILL.md) | Un informe con humor sobre la sesión, con números reales: tareas, bugs propios, «listo» que no lo eran y el momento más irónico. | `/roast-sesion` |
 | [`example`](example/SKILL.md) | Genera 10 versiones de una pantalla en un solo HTML, cada una con un patrón UX distinto, para comparar y elegir. | `/example checkout de un plan` |
+| [`mobile`](mobile/SKILL.md) | Muestra una pantalla en Android e iOS lado a lado en un solo HTML, con un selector de modelo de teléfono en cada una. | `/mobile login de la app` |
 
 ## Cómo funciona una skill
 
@@ -61,6 +62,8 @@ Todas usan los mismos criterios para un buen pedido:
 
 **`example`**: lee el contexto (repo, tokens de diseño, rutas, plataforma) y genera un HTML con 10 versiones de una pantalla. Cada versión usa un patrón UX distinto y tiene la tarea principal funcionando, con animaciones y accesibilidad. Se cambia de versión con `1`–`0` o las flechas. Si nombrás un producto que no encuentra, pregunta dónde está antes de suponer.
 
+**`mobile`**: toma la pantalla de una URL o dev server, del repo o de tu descripción, y la muestra en dos teléfonos: Android (Material 3) a la izquierda e iOS (HIG) a la derecha. Cada uno tiene su selector de modelo (Galaxy S10, iPhone 11, etc.) con el viewport real, barra de estado y zonas seguras. Incluye vertical/horizontal, claro/oscuro y scroll sincronizado.
+
 **`roast-sesion`**: un informe con humor sobre la sesión. Cada número sale de la sesión real; no inventa nada.
 
 **`read-whatsapp`**: copia la base de WhatsApp Desktop a memoria y la lee con `wa.py`: `chats`, `read --since`, `search`. Nunca escribe ni envía.
@@ -81,6 +84,7 @@ ln -s ~/code/skills/stage-no-tests ~/.claude/skills/stage-no-tests
 ln -s ~/code/skills/decisiones-tecnicas ~/.claude/skills/decisiones-tecnicas
 ln -s ~/code/skills/roast-sesion ~/.claude/skills/roast-sesion
 ln -s ~/code/skills/example ~/.claude/skills/example
+ln -s ~/code/skills/mobile ~/.claude/skills/mobile
 ```
 
 Para un solo repo, copiá la carpeta a `.claude/skills/` de ese repo.
